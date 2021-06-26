@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import './App.scss';
 import ResultComponent from './components/ResultComponent';
-import KeypadComponent from './components/KeypadComponent';
+import Keypad from './components/Keypad';
 
 class App extends Component {
   constructor(props) {
@@ -81,7 +81,7 @@ class App extends Component {
         <div className="calculator-body">
           <h1>Yassin's Calculator</h1>
           <ResultComponent result={this.state.result}/>
-          <KeypadComponent onClick={this.onClick}/>
+          <Keypad clicked={this.onClick}/>
         </div>
     </div>
     );
