@@ -19,8 +19,8 @@ class App extends Component {
       this.Reset();
     }
     else if(button === "CE") {
-      if(this.state.result != "0") {
-        if(this.state.result.length == 1) {
+      if(this.state.result !== "0") {
+        if(this.state.result.length === 1) {
           this.Reset();
         }
         else {
@@ -31,9 +31,9 @@ class App extends Component {
       
     }
     else {
-      if(this.state.result == "0") {
+      if(this.state.result === "0") {
         this.setState({
-          result: this.state.result = button
+          result: button
         })
       }else {
         this.setState({
