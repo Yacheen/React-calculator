@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import './App.css';
+import './App.scss';
 import ResultComponent from './components/ResultComponent';
 import KeypadComponent from './components/KeypadComponent';
 
