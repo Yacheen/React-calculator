@@ -1,25 +1,91 @@
-import logo from './logo.svg';
+import React, {Component} from "react";
 import './App.css';
+import ResultComponent from './components/ResultComponent';
+import KeypadComponent from './components/KeypadComponent';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      result: "0"
+    }
+  }
+//methods
+  onClick = button => {
+    if(button === "=") {
+      this.Calculate();
+    }
+    else if(button === "C") {
+      this.Reset();
+    }
+    else if(button === "CE") {
+      if(this.state.result != "0") {
+        if(this.state.result.length == 1) {
+          this.Reset();
+        }
+        else {
+          this.Erase();
+        }
+        
+      }
+      
+    }
+    else {
+      if(this.state.result == "0") {
+        this.setState({
+          result: this.state.result = button
+        })
+      }else {
+        this.setState({
+          result: this.state.result + button
+        })
+
+      }
+      
+    }
+    
+  }
+
+  Calculate = () => {
+    try {
+      this.setState({
+        result: (eval(this.state.result) || "" ) + ""
+      })
+    }
+    catch (e) {
+      this.setState({
+        result: "error"
+      })
+    }
+
+  };
+
+  Reset = () => {
+    this.setState({
+      result: "0"
+    })
+
+  }
+
+  Erase = () => {
+    this.setState({
+      result: this.state.result.slice(0, -1)
+    });
+
+  }
+  
+  render() {
+    return (
+      <div>
+        <div className="calculator-body">
+          <h1>Yassin's Calculator</h1>
+          <ResultComponent result={this.state.result}/>
+          <KeypadComponent onClick={this.onClick}/>
+        </div>
     </div>
-  );
+    );
+
+  }
 }
 
 export default App;
