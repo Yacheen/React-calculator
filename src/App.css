@@ -1,7 +1,7 @@
 .calculator-body {
   background: #141313;
   margin: auto;
-  max-width: 25%;
+  width: 20rem;
   border-radius: 5%;
   padding: 1rem;
   padding-top: 0.1rem;
