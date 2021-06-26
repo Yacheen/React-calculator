@@ -49,6 +49,7 @@ class App extends Component {
   Calculate = () => {
     try {
       this.setState({
+        // eslint-disable-next-line
         result: (eval(this.state.result) || "" ) + ""
       })
     }
